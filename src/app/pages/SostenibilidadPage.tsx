@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Leaf, Droplets, Recycle, Award, Sun, Wind, ArrowRight } from "lucide-react";
 import { fadeUp, useSectionInView, ImpactCounter, Breadcrumbs } from "../components/common";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 export default function SostenibilidadPage() {
   const navigate = useNavigate();
@@ -37,11 +38,14 @@ export default function SostenibilidadPage() {
 
   return (
     <div className="pt-16 flex flex-col min-h-screen" style={{ background: "#F7F4F0" }}>
-
+      <SEO
+        title="Sostenibilidad — Aura | Moda sostenible"
+        description="Materiales orgánicos y reciclados, comercio justo, energía limpia y envases sin plástico. Conoce los seis compromisos no negociables de Aura."
+      />
       {/* Hero */}
       <section
         ref={heroRef}
-        className="relative py-32 px-10 overflow-hidden"
+        className="relative py-32 px-5 sm:px-8 md:px-10 overflow-hidden"
         style={{ background: "linear-gradient(160deg, #3A4D3E 0%, #4A5D4E 50%, #5A6D5E 100%)" }}
       >
         <div
@@ -53,7 +57,7 @@ export default function SostenibilidadPage() {
           <motion.p className="text-xs tracking-[0.25em] uppercase mb-6" style={{ fontFamily: "Inter, sans-serif", color: "rgba(255,255,255,0.5)" }} variants={fadeUp} custom={0} initial="hidden" animate={heroInView ? "visible" : "hidden"}>
             Nuestra filosofía
           </motion.p>
-          <motion.h1 className="text-5xl md:text-7xl italic mb-8 leading-tight max-w-3xl" style={{ fontFamily: "Playfair Display, serif", color: "#FFFFFF" }} variants={fadeUp} custom={0.1} initial="hidden" animate={heroInView ? "visible" : "hidden"}>
+          <motion.h1 className="text-4xl sm:text-5xl md:text-7xl italic mb-8 leading-tight max-w-3xl" style={{ fontFamily: "Playfair Display, serif", color: "#FFFFFF" }} variants={fadeUp} custom={0.1} initial="hidden" animate={heroInView ? "visible" : "hidden"}>
             La moda puede ser<br />parte de la solución.
           </motion.h1>
           <motion.p className="text-base leading-relaxed max-w-xl" style={{ fontFamily: "Inter, sans-serif", color: "rgba(255,255,255,0.7)" }} variants={fadeUp} custom={0.2} initial="hidden" animate={heroInView ? "visible" : "hidden"}>
@@ -63,7 +67,7 @@ export default function SostenibilidadPage() {
       </section>
 
       {/* Impact counters */}
-      <section className="py-20 px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
+      <section className="py-20 px-5 sm:px-8 md:px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <ImpactCounter num={1500} prefix="+" suffix=" kg" label="de plástico reciclado" sub="en nuestras colecciones 2025–26" />
           <ImpactCounter num={98} suffix="%" label="de agua ahorrada" sub="frente al algodón convencional" />
@@ -72,7 +76,7 @@ export default function SostenibilidadPage() {
       </section>
 
       {/* 6 pillars */}
-      <section ref={pillarsRef} className="py-24 px-10">
+      <section ref={pillarsRef} className="py-24 px-5 sm:px-8 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div className="mb-16" variants={fadeUp} custom={0} initial="hidden" animate={pillarsInView ? "visible" : "hidden"}>
             <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#C67C4E" }}>Nuestros pilares</p>
@@ -100,7 +104,7 @@ export default function SostenibilidadPage() {
       </section>
 
       {/* Process timeline */}
-      <section ref={processRef} className="py-24 px-10" style={{ background: "linear-gradient(135deg, #E8E0D8 0%, #F0EBE5 100%)" }}>
+      <section ref={processRef} className="py-24 px-5 sm:px-8 md:px-10" style={{ background: "linear-gradient(135deg, #E8E0D8 0%, #F0EBE5 100%)" }}>
         <div className="max-w-7xl mx-auto">
           <motion.div className="mb-16" variants={fadeUp} custom={0} initial="hidden" animate={processInView ? "visible" : "hidden"}>
             <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#C67C4E" }}>Cómo lo hacemos</p>
@@ -121,7 +125,7 @@ export default function SostenibilidadPage() {
       </section>
 
       {/* Certifications */}
-      <section ref={certRef} className="py-24 px-10">
+      <section ref={certRef} className="py-24 px-5 sm:px-8 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div className="mb-14 flex items-end justify-between" variants={fadeUp} custom={0} initial="hidden" animate={certInView ? "visible" : "hidden"}>
             <div>
@@ -153,7 +157,7 @@ export default function SostenibilidadPage() {
       </section>
 
       {/* CTA */}
-      <section ref={ctaRef} className="py-24 px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
+      <section ref={ctaRef} className="py-24 px-5 sm:px-8 md:px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <motion.h2 className="text-4xl italic mb-6" style={{ fontFamily: "Playfair Display, serif", color: "#FFFFFF" }} variants={fadeUp} custom={0} initial="hidden" animate={ctaInView ? "visible" : "hidden"}>
             Cada prenda que eliges<br />es un acto de cuidado.

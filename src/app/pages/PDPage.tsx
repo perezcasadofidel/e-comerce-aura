@@ -6,6 +6,7 @@ import { getProductBySlug, WOMEN_PRODUCTS, MEN_PRODUCTS } from "../data/products
 import { Breadcrumbs, SizeButton } from "../components/common";
 import HeartButton from "../components/HeartButton";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 import { useStore } from "../store";
 
 export default function PDPage() {
@@ -16,6 +17,22 @@ export default function PDPage() {
 
   const [selectedSize, setSelectedSize] = useState(product.sizes[0] ?? "S");
   const [added, setAdded] = useState(false);
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.img,
+    description: `Tejido con ${product.material.toLowerCase()} y tintes naturales. ${product.recycled}% de material reciclado u orgánico, huella de carbono ${product.carbon.toLowerCase()}.`,
+    brand: { "@type": "Brand", name: "Aura" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: product.priceNum,
+      availability: "https://schema.org/InStock",
+      url: "https://aura-sustainable.com" + window.location.pathname,
+    },
+  };
 
   const collection = product.gender === "mujer" ? WOMEN_PRODUCTS : MEN_PRODUCTS;
   const galleryImgs = [
@@ -40,15 +57,21 @@ export default function PDPage() {
 
   return (
     <div className="pt-16 min-h-screen flex flex-col" style={{ background: "#F7F4F0" }}>
-      <div className="max-w-7xl mx-auto px-10 py-12 flex-1 w-full">
+      <SEO
+        title={`${product.name} — ${product.price} | Aura`}
+        description={`${product.name}: ${product.material.toLowerCase()} con tintes naturales, ${product.recycled}% reciclado u orgánico. Huella de carbono ${product.carbon.toLowerCase()}. Compra sostenible en Aura.`}
+        image={product.img}
+        jsonLd={productJsonLd}
+      />
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 py-12 flex-1 w-full">
         <Breadcrumbs items={[
           { label: "Inicio", to: "/" },
           { label: product.gender === "mujer" ? "Mujer" : "Hombre", to: product.gender === "mujer" ? "/mujer" : "/hombre" },
           { label: product.category },
           { label: product.name },
         ]} />
-        <div className="flex gap-16">
-          <div style={{ flex: "0 0 60%" }}>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+          <div className="lg:basis-[60%] lg:shrink-0">
             <div className="flex gap-3">
               <div className="flex flex-col gap-3">
                 {galleryImgs.map((src, i) => (
@@ -60,7 +83,7 @@ export default function PDPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    <img src={src} alt="" className="w-full h-full object-cover" />
+                    <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
                   </motion.button>
                 ))}
               </div>

@@ -7,7 +7,7 @@ export default function Footer() {
     { label: "Contacto", to: "/contacto" },
   ];
   return (
-    <footer className="py-16 px-10" style={{ borderTop: "1px solid #E5DFD9" }}>
+    <footer className="py-16 px-5 sm:px-8 md:px-10" style={{ borderTop: "1px solid #E5DFD9" }}>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <Link
           to="/"

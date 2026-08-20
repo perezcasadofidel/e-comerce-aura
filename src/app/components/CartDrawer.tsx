@@ -42,7 +42,7 @@ export default function CartDrawer() {
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 260, damping: 30 }}
           >
-            <div className="flex items-center justify-between px-8 py-6" style={{ borderBottom: "1px solid #E5DFD9" }}>
+            <div className="flex items-center justify-between px-5 sm:px-8 py-6" style={{ borderBottom: "1px solid #E5DFD9" }}>
               <h2 className="text-lg" style={{ fontFamily: "Playfair Display, serif", color: "#2C2A28" }}>Tu bolsa</h2>
               <motion.button onClick={close} whileHover={{ rotate: 90, opacity: 0.6 }} transition={{ duration: 0.2 }} className="cursor-pointer" aria-label="Cerrar bolsa">
                 <X size={20} strokeWidth={1.5} style={{ color: "#2C2A28" }} />
@@ -50,13 +50,13 @@ export default function CartDrawer() {
             </div>
 
             {cart.length === 0 && !ordered && (
-              <div className="flex-1 flex flex-col items-center justify-center px-8 text-center">
+              <div className="flex-1 flex flex-col items-center justify-center px-5 sm:px-8 text-center">
                 <p className="text-base mb-2" style={{ fontFamily: "Playfair Display, serif", color: "#2C2A28" }}>Tu bolsa está vacía</p>
                 <p className="text-sm" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }}>Añade prendas desde la colección para comenzar.</p>
               </div>
             )}
 
-            <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-8 py-6 space-y-6">
               <AnimatePresence>
                 {cart.map((item) => (
                   <motion.div
@@ -113,7 +113,7 @@ export default function CartDrawer() {
               </AnimatePresence>
             </div>
 
-            <div className="px-8 py-6" style={{ borderTop: "1px solid #E5DFD9" }}>
+            <div className="px-5 sm:px-8 py-6" style={{ borderTop: "1px solid #E5DFD9" }}>
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-sm" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }}>Subtotal</span>

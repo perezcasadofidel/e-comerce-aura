@@ -30,7 +30,7 @@ function AppShell() {
     <div className="size-full relative overflow-hidden" style={{ background: "#F7F4F0" }}>
       <Header scrolled={scrolled} />
 
-      <motion.div
+      <motion.main
         key={location.pathname}
         ref={scrollRef as any}
         className="scroll-container size-full overflow-y-auto"
@@ -51,7 +51,7 @@ function AppShell() {
             <Route path="/contacto" element={<ContactoPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-      </motion.div>
+      </motion.main>
 
       <CartDrawer />
       <FavoritesDrawer />

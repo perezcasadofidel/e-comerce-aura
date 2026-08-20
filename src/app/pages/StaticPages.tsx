@@ -3,14 +3,17 @@ import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Check } from "lucide-react";
 import { Breadcrumbs } from "../components/common";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
-function StaticPageShell({ kicker, title, intro, breadcrumbs, children }: {
-  kicker: string; title: string; intro: string; breadcrumbs: { label: string; to?: string }[]; children: ReactNode;
+function StaticPageShell({ kicker, title, intro, breadcrumbs, seoTitle, seoDescription, children }: {
+  kicker: string; title: string; intro: string; breadcrumbs: { label: string; to?: string }[];
+  seoTitle?: string; seoDescription?: string; children: ReactNode;
 }) {
   return (
     <div className="pt-16 min-h-screen flex flex-col" style={{ background: "#F7F4F0" }}>
+      <SEO title={seoTitle ?? `${title} — Aura`} description={seoDescription ?? intro} />
       <div
-        className="py-16 px-10"
+        className="py-16 px-5 sm:px-8 md:px-10"
         style={{ borderBottom: "1px solid #E5DFD9", background: "linear-gradient(160deg, #F7F4F0 0%, #EDE5DC 100%)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -20,7 +23,7 @@ function StaticPageShell({ kicker, title, intro, breadcrumbs, children }: {
           <p className="text-sm leading-relaxed" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }}>{intro}</p>
         </div>
       </div>
-      <div className="max-w-3xl mx-auto px-10 py-14 flex-1 w-full">{children}</div>
+      <div className="max-w-3xl mx-auto px-5 sm:px-8 md:px-10 py-14 flex-1 w-full">{children}</div>
       <Footer />
     </div>
   );
@@ -42,6 +45,8 @@ export function PrivacidadPage() {
       title="Política de Privacidad"
       intro="Última actualización: agosto de 2026. En Aura tratamos tus datos con la misma honestidad con la que fabricamos cada prenda: transparencia total y cero letra pequeña."
       breadcrumbs={[{ label: "Inicio", to: "/" }, { label: "Privacidad" }]}
+      seoTitle="Política de Privacidad — Aura | Moda sostenible"
+      seoDescription="Cómo trata Aura tus datos personales: transparencia total, cero venta de datos y cumplimiento del RGPD. Última actualización: agosto de 2026."
     >
       <Section title="1. Qué datos recogemos">
         <p>Recogemos únicamente los datos necesarios para tu compra: nombre, correo electrónico, dirección de envío y datos de pago procesados de forma segura. Si creas una cuenta, guardamos también tu historial de pedidos y favoritos.</p>
@@ -70,6 +75,8 @@ export function TerminosPage() {
       title="Términos y Condiciones"
       intro="Las condiciones que rigen tu compra en Aura. Nada oculto, nada abusivo: solo lo necesario para que todo funcione con claridad."
       breadcrumbs={[{ label: "Inicio", to: "/" }, { label: "Términos" }]}
+      seoTitle="Términos y Condiciones — Aura | Moda sostenible"
+      seoDescription="Condiciones de compra en Aura: pedidos, precios, devoluciones de 30 días, propiedad intelectual y ley aplicable."
     >
       <Section title="1. Pedidos y precios">
         <p>Todos los precios están en euros e incluyen el IVA aplicable. El envío es gratuito a partir de 50 €. Los pedidos se confirman por correo electrónico y pueden cancelarse gratuitamente antes del envío.</p>
@@ -117,6 +124,8 @@ export function ContactoPage() {
       title="Contacto"
       intro="¿Dudas sobre tallas, materiales, envíos o devoluciones? Escríbenos y te respondemos en menos de 24 horas laborables."
       breadcrumbs={[{ label: "Inicio", to: "/" }, { label: "Contacto" }]}
+      seoTitle="Contacto — Aura | Moda sostenible"
+      seoDescription="¿Dudas sobre tallas, materiales, envíos o devoluciones? Escríbenos a hola@aura-sustainable.com y te respondemos en menos de 24 horas laborables."
     >
       <div className="grid md:grid-cols-2 gap-12">
         <div>

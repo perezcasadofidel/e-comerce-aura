@@ -6,6 +6,7 @@ import { ALL_PRODUCTS } from "../data/products";
 import { fadeUp, useSectionInView, ImpactCounter } from "../components/common";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 export default function Homepage() {
   const navigate = useNavigate();
@@ -28,17 +29,21 @@ export default function Homepage() {
 
   return (
     <div>
+      <SEO
+        title="Aura | Moda sostenible y ética — Slow fashion"
+        image={`https://images.unsplash.com/flagged/photo-1570733117311-d990c3816c47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=85&w=1400`}
+      />
       {/* Hero */}
-      <section className="relative min-h-screen flex overflow-hidden" style={{ background: "#F7F4F0" }}>
+      <section className="relative min-h-screen flex flex-col md:flex-row overflow-hidden" style={{ background: "#F7F4F0" }}>
         {/* Left — text */}
-        <div className="relative z-10 flex flex-col justify-center px-16 xl:px-24" style={{ flex: "0 0 52%" }}>
+        <div className="relative z-10 flex flex-col justify-center px-6 sm:px-12 md:px-16 xl:px-24 pt-28 md:pt-0 pb-8 md:pb-0 md:flex-[0_0_52%]" style={{}}>
           {/* Noise texture */}
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")` }} />
           <div className="relative">
             <motion.p className="text-xs tracking-[0.28em] uppercase mb-8" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }} custom={0} variants={heroVars} initial="hidden" animate="visible">
               Colección Primavera — 2026
             </motion.p>
-            <motion.h1 className="text-5xl xl:text-6xl italic mb-8 leading-[1.1]" style={{ fontFamily: "Playfair Display, serif", color: "#2C2A28" }} custom={0.1} variants={heroVars} initial="hidden" animate="visible">
+            <motion.h1 className="text-4xl sm:text-5xl xl:text-6xl italic mb-8 leading-[1.1]" style={{ fontFamily: "Playfair Display, serif", color: "#2C2A28" }} custom={0.1} variants={heroVars} initial="hidden" animate="visible">
               Viste con<br />propósito.<br />Elige lo que<br />perdura.
             </motion.h1>
             <motion.p className="text-sm leading-relaxed mb-12 max-w-sm" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }} custom={0.2} variants={heroVars} initial="hidden" animate="visible">
@@ -61,25 +66,23 @@ export default function Homepage() {
         </div>
 
         {/* Right — editorial image */}
-        <div className="flex-1 relative overflow-hidden">
+        <div className="relative h-[45vh] md:h-auto md:flex-1 overflow-hidden">
           <motion.img
             src="https://images.unsplash.com/flagged/photo-1570733117311-d990c3816c47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=85&w=1400"
             alt="Aura — moda sostenible"
+            fetchPriority="high"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ y: parallaxY, filter: "brightness(0.96) saturate(0.88)" }}
           />
           {/* Soft left fade so it blends with the text panel */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to right, #F7F4F0 0%, rgba(247,244,240,0.15) 18%, transparent 40%)" }} />
+          <div className="absolute inset-0 pointer-events-none hidden md:block" style={{ background: "linear-gradient(to right, #F7F4F0 0%, rgba(247,244,240,0.15) 18%, transparent 40%)" }} />
+          {/* Soft top fade on mobile so it blends with the text panel */}
+          <div className="absolute inset-0 pointer-events-none md:hidden" style={{ background: "linear-gradient(to bottom, #F7F4F0 0%, rgba(247,244,240,0.15) 18%, transparent 40%)" }} />
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div className="absolute bottom-10 left-16 xl:left-24 flex flex-col items-start gap-2 z-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }}>
-          <motion.div className="w-px" style={{ background: "linear-gradient(to bottom, transparent, #7A736E)" }} animate={{ height: [0, 48, 0] }} transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }} />
-        </motion.div>
       </section>
 
       {/* Best Sellers */}
-      <section ref={sellersRef} className="py-24 px-10">
+      <section ref={sellersRef} className="py-24 px-5 sm:px-8 md:px-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-12">
             <div>
@@ -101,7 +104,7 @@ export default function Homepage() {
       </section>
 
       {/* Gender nav bands */}
-      <section className="py-0 px-10 pb-24">
+      <section className="py-0 px-5 sm:px-8 md:px-10 pb-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             { label: "Mujer", sub: "Lino, bambú y algodón orgánico", to: "/mujer", img: `https://images.unsplash.com/photo-1599384779814-79bbaef08d9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900` },
@@ -119,7 +122,7 @@ export default function Homepage() {
               transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.15 }}
             >
               {/* Photo */}
-              <img src={band.img} alt={band.label} className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.75) saturate(0.85)" }} />
+              <img src={band.img} alt={band.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.75) saturate(0.85)" }} />
               {/* Gradient overlay */}
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(44,42,40,0.72) 0%, rgba(44,42,40,0.1) 60%, transparent 100%)" }} />
               {/* Text */}
@@ -136,7 +139,7 @@ export default function Homepage() {
       </section>
 
       {/* Impact */}
-      <section className="py-24 px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
+      <section className="py-24 px-5 sm:px-8 md:px-10" style={{ background: "linear-gradient(135deg, #4A5D4E 0%, #3A4D3E 100%)" }}>
         <div className="max-w-7xl mx-auto">
           <p className="text-xs tracking-[0.2em] uppercase text-center mb-16" style={{ fontFamily: "Inter, sans-serif", color: "rgba(255,255,255,0.5)" }}>Nuestro impacto</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
@@ -157,7 +160,7 @@ export default function Homepage() {
       </section>
 
       {/* Editorial — Nuestra filosofía */}
-      <section ref={editRef} className="py-24 px-10">
+      <section ref={editRef} className="py-24 px-5 sm:px-8 md:px-10">
         <div className="max-w-7xl mx-auto">
           <div
             className="rounded-sm overflow-hidden px-6 py-16 md:p-16 flex flex-col items-center text-center"

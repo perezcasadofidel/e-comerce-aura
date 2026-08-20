@@ -50,7 +50,7 @@ export default function SearchOverlay() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="max-w-3xl mx-auto w-full px-10 pt-24 pb-6">
+          <div className="max-w-3xl mx-auto w-full px-5 sm:px-8 md:px-10 pt-24 pb-6">
             <div className="flex items-center gap-4 pb-4" style={{ borderBottom: "1px solid #E5DFD9" }}>
               <Search size={20} strokeWidth={1.5} style={{ color: "#7A736E" }} />
               <input
@@ -74,7 +74,7 @@ export default function SearchOverlay() {
           </div>
 
           <div className="flex-1 overflow-y-auto">
-            <div className="max-w-3xl mx-auto w-full px-10 pb-24">
+            <div className="max-w-3xl mx-auto w-full px-5 sm:px-8 md:px-10 pb-24">
               {query.trim() === "" ? (
                 <p className="text-sm py-10" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }}>
                   Escribe para buscar entre nuestros {ALL_PRODUCTS.length} productos.
@@ -107,7 +107,7 @@ export default function SearchOverlay() {
           </div>
 
           {results.length > 0 && (
-            <div className="border-t px-10 py-4 text-center" style={{ borderColor: "#E5DFD9", background: "#F7F4F0" }}>
+            <div className="border-t px-5 sm:px-8 md:px-10 py-4 text-center" style={{ borderColor: "#E5DFD9", background: "#F7F4F0" }}>
               <span className="text-xs inline-flex items-center gap-1.5" style={{ fontFamily: "Inter, sans-serif", color: "#7A736E" }}>
                 {results.length} resultado{results.length !== 1 && "s"} <ArrowRight size={12} strokeWidth={1.5} />
               </span>

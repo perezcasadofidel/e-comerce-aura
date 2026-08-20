@@ -14,7 +14,14 @@ export default function Homepage() {
   useEffect(() => {
     const el = document.querySelector(".scroll-container");
     if (!el) return;
-    const h = () => setParallaxY((el as HTMLElement).scrollTop * 0.3);
+    const mq = window.matchMedia("(min-width: 768px)");
+    const h = () => {
+      if (!mq.matches) {
+        setParallaxY(0);
+        return;
+      }
+      setParallaxY((el as HTMLElement).scrollTop * 0.3);
+    };
     el.addEventListener("scroll", h);
     return () => el.removeEventListener("scroll", h);
   }, []);
